@@ -1,6 +1,7 @@
 {% extends "start_list.html" %}
 
 {% block content %}
+    <title>Танчики</title>
     <h1>Вы помните как выглядят классические танчики?</h1>
     <h1>Нет?</h1>
     <h1>Тогда вы попали по адресу!</h1>
@@ -10,4 +11,13 @@
     <h2>Наша игра создана бла-бла-бла и бла-бла-бла</h2>
     <h2>бла-бла-бла и бла-бла-бла</h2>
     <h6>Его редактировать и редактировать</h6>
+    {% for field in form if field.name != 'csrf_token' %}
+            <div>
+                {{ field.label() }}
+                {{ field() }}
+                {% for error in field.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+        {% endfor %}
 {% endblock %}
