@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import sqlite3
+from data import db_session
 
 app = Flask(__name__)
 
@@ -10,7 +11,6 @@ def help_bd(login, password):
     cur.execute('INSERT INTO registr(id, password, login) VALUES(?, ?, ?)',
                 (len(all) + 1, str(password), str(login)))
     all = cur.execute('SELECT * FROM registr').fetchall()
-    print(all)
     con.commit()
     con.close()
 
