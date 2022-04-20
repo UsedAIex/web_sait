@@ -1,9 +1,13 @@
 import sys
 import requests
-
+xy = ''
+xy += '9'
+xy += ','
+xy += '1'
+print(str(xy))
 url = "http://static-maps.yandex.ru/1.x"
 params = {
-    "ll": '55.673317,37.463594',
+    "ll": '37.46359,54.673317',
     "spn": "0.003,0.003",
     "l": "map"
 }
@@ -15,7 +19,7 @@ if not response:
     sys.exit(1)
 
 # Запишем полученное изображение в файл.
-map_file = "map.png"
+map_file = "static/map.png"
 with open(map_file, "wb") as file:
     file.write(response.content)
 print(map_file)
